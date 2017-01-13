@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+
+	<!-- Jquery -->
+	<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+	<!-- Formatting Money -->
+	<script src='js/accounting.min.js'></script>
+	
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+	<script>
+
+		function calculaPrecioCanje(){
+
+
+				var pvp_canje = document.getElementById('canje').value;
+				var pvp_canje_not_comma = Number(pvp_canje.replace(/,/gi, ''));
+				console.log(pvp_canje_not_comma);
+				pvp_canje_margen_iva = Number(pvp_canje_not_comma*1.3*1.19);
+				pvp_final = Math.ceil(pvp_canje_margen_iva/10000)*10000;
+
+				document.getElementById('pvpcanje').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+				document.getElementById('speech-canje').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+
+			}
+
+
+		function calculaPrecioCanjeiPhonePlus(){
+
+
+				var pvp_canje = document.getElementById('canje-plus').value;
+				var pvp_canje_not_comma = Number(pvp_canje.replace(/,/gi, ''));
+				console.log(pvp_canje_not_comma);
+				pvp_canje_margen_iva = Number(pvp_canje_not_comma*1.19);
+				pvp_final = Math.ceil(pvp_canje_margen_iva/10000)*10000;
+
+				document.getElementById('pvpcanje-plus').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+				document.getElementById('speech-canje-plus').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+
+			}
+
+		function calculaPrecioStock(){
+				var pvp_stock = document.getElementById('stock').value;
+				var pvp_stock_not_comma = Number(pvp_stock.replace(/,/gi, ''));
+				pvp_stock_margen_iva = Number(pvp_stock_not_comma*1.3*1.19);
+				pvp_final = Math.ceil(pvp_stock_margen_iva/10000)*10000;
+
+
+				document.getElementById('pvpstock').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+				document.getElementById('speech-stock').innerHTML = accounting.formatMoney(pvp_final,'$',0, ',');
+
+		}
+
+	</script>
+
+	<title>Cotizaciones iShop</title>
+
+	
+
+</head>
+<body>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<div class="page-header">
+					<img src="img/logo-ishop.jpg" class='img-responsive center-block' alt="Logo iShop">
+					<h2 class='text-center'>Bienvenido a iShop Service</h2>
+				</div>
+			</div>
+			<div class="col-md-3"></div>
+		</div>		
+	</div>
+	
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form class="form-horizontal">
+				  <div class="form-group">
+				    <label for="canje" class="col-sm-4 control-label">Precio de Canje</label>
+				    <div class="col-md-6">
+				      <input type="text" class="form-control" id="canje"  placeholder='Pegue el precio de GSX Aquí' required="required" oninput="calculaPrecioCanje()">
+				    </div>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="stock" class="col-sm-4 control-label">Precio con devolución de KBB</label>
+				    <div class="col-md-2">
+				      <p  id="pvpcanje"></p>
+				    </div>
+				  </div>
+				</form>	
+
+				<hr>
+			
+				<form class="form-horizontal">
+				  <div class="form-group">
+				    <label for="canje" class="col-sm-4 control-label">Precio de Stock</label>
+				    <div class="col-md-6">
+				      <input type="text" class="form-control" id="stock" oninput="calculaPrecioStock()" placeholder='Pegue el precio de GSX Aquí'>
+				    </div>
+				  </div>				  
+				  <div class="form-group">
+				    <label for="stock" class="col-sm-4 control-label">Precio sin devolución de KBB</label>
+				    <div class="col-md-2">
+				      <p id="pvpstock"></p>
+				    </div>
+				  </div>
+				</form>	
+			</div>
+			<div class="col-md-3"></div>
+		</div>		
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<h3>iPhone 6 Plus con Problemas de Pantalla</h3>
+			</div>
+			<div class="col-md-3"></div>
+		</div>		
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<hr>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-12">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				<form class="form-horizontal">
+				  <div class="form-group">
+				    <label for="canje" class="col-sm-4 control-label">Precio de Canje</label>
+				    <div class="col-md-6">
+				      <input type="text" class="form-control" id="canje-plus"  placeholder='Pegue el precio de GSX Aquí' required="required" oninput="calculaPrecioCanjeiPhonePlus()">
+				    </div>
+				  </div>
+
+				  <div class="form-group">
+				    <label for="stock" class="col-sm-4 control-label">Precio con devolución de KBB</label>
+				    <div class="col-md-2">
+				      <p  id="pvpcanje-plus"></p>
+				    </div>
+				  </div>
+				</form>	
+
+				<hr>
+			
+			
+			</div>
+			<div class="col-md-3"></div>
+		</div>		
+	</div>
+
+	
+
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	
+</body>
+</html>
